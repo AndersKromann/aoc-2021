@@ -7,7 +7,7 @@
     "dev": "nodemon",
     "build": "rm -rf dist && tsc",
     "test": "jest",
-    "start": "node dist/index.js",
+    "start": "ts-node src/index.ts",
     "init-day": "ts-node src/scripts/initNewDay/initNewDay.ts",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src"

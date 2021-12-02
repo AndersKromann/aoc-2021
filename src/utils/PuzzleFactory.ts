@@ -2,17 +2,19 @@ import Puzzle from '../types/AbstractPuzzle';
 import readFile from './readFile';
 
 class PuzzleFactory {
-  public async getPuzzle(puzzleName: string) {
+  public async getPuzzle(puzzleName: string, useTestInput = false) {
     const puzzlePath = `src/days/${puzzleName}`;
-    let input = '';
+    let input = [];
     try {
-      input = await readFile(`${puzzlePath}/input.txt`);
+      const inputFileName = useTestInput ? `test_input.txt` : 'input.txt';
+      const rawInput = await readFile(`${puzzlePath}/${inputFileName}`);
+      input = rawInput.split(/\r?\n/);
     } catch (error) {
       console.error(error);
       process.exit(1);
     }
 
-    const puzzleModule: { default: { new (): Puzzle } } = await import(
+    const puzzleModule: { default: { new(): Puzzle } } = await import(
       `../days/${puzzleName}/Puzzle`
     );
 
