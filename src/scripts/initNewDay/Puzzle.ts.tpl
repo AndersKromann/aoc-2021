@@ -1,23 +1,23 @@
 import Puzzle from '../../types/AbstractPuzzle';
 
 export default class ConcretePuzzle extends Puzzle {
-  public solveFirst(): string {
+  public solveFirst(): number {
     // WRITE SOLUTION FOR TEST 1
-    return 'day 1 solution 1';
+    return 0;
   }
 
-  public getFirstExpectedResult(): string {
+  public getFirstExpectedResult(): number {
     // RETURN EXPECTED SOLUTION FOR TEST 1;
-    return 'day 1 solution 1';
+    return 0;
   }
 
-  public solveSecond(): string {
+  public solveSecond(): number {
     // WRITE SOLUTION FOR TEST 2
-    return 'day 1 solution 2';
+    return 0;
   }
 
-  public getSecondExpectedResult(): string {
+  public getSecondExpectedResult(): number {
     // RETURN EXPECTED SOLUTION FOR TEST 2;
-    return 'day 1 solution 2';
+    return 0;
   }
 }

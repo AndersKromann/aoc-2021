@@ -11,6 +11,7 @@ const args = process.argv.slice(2);
 const day = args[0];
 if (!day) {
   console.log('Please run with the day to bootstrap, i.e. npm run init-day 1');
+  process.exit(1);
 }
 console.log(`creating template for day ${2}`);
 const basePath = 'src/days';
@@ -23,3 +24,4 @@ const newDayPath = `${basePath}/${day}`;
 mkdirSync(newDayPath);
 copyFileSync(`${__dirname}/Puzzle.ts.tpl`, `${newDayPath}/Puzzle.ts`);
 writeFileSync(`${newDayPath}/input.txt`, '');
+writeFileSync(`${newDayPath}/test_input.txt`, '');
