@@ -8,13 +8,13 @@ class PuzzleFactory {
     try {
       const inputFileName = useTestInput ? `test_input.txt` : 'input.txt';
       const rawInput = await readFile(`${puzzlePath}/${inputFileName}`);
-      input = rawInput.split(/\r?\n/);
+      input = rawInput.split(/\r?\n/).filter((val) => !!val);
     } catch (error) {
       console.error(error);
       process.exit(1);
     }
 
-    const puzzleModule: { default: { new(): Puzzle } } = await import(
+    const puzzleModule: { default: { new (): Puzzle } } = await import(
       `../days/${puzzleName}/Puzzle`
     );
 
