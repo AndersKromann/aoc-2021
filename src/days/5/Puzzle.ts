@@ -7,32 +7,37 @@ interface Coord {
 
 export default class ConcretePuzzle extends Puzzle {
   public solveFirst(): number {
-    console.log('Solving first')
     const inputCopy = [...this.input];
 
-    let linePoints: Coord[] = []
-    inputCopy.forEach(line => {
-      const [a, b] = line.split(' -> ').map(point => {
-        const [x, y] = point.split(',').map(num => Number.parseInt(num));
-        return { x, y }
+    let linePoints: Coord[] = [];
+    inputCopy.forEach((line) => {
+      const [a, b] = line.split(' -> ').map((point) => {
+        const [x, y] = point.split(',').map((num) => Number.parseInt(num));
+        return { x, y };
       });
       linePoints.push(...this.getLinePoints(a, b));
-    })
-    const occurrencesOf = (coord: Coord, pointList: Coord[]) => pointList.reduce((count, curr) => ((coord.x === curr.x && coord.y === curr.y) ? count + 1 : count), 0);
+    });
+    const occurrencesOf = (coord: Coord, pointList: Coord[]) =>
+      pointList.reduce(
+        (count, curr) =>
+          coord.x === curr.x && coord.y === curr.y ? count + 1 : count,
+        0
+      );
     let score = 0;
-    linePoints.forEach(point => {
+    linePoints.forEach((point) => {
       if (occurrencesOf(point, linePoints) >= 2) {
         score++;
-        linePoints = linePoints.filter(p => !(p.x === point.x && p.y === point.y))
+        linePoints = linePoints.filter(
+          (p) => !(p.x === point.x && p.y === point.y)
+        );
       }
-    })
-
+    });
 
     return score;
   }
 
   getLinePoints(a: Coord, b: Coord, allowDiagonals = false): Coord[] {
-    const points: Coord[] = []
+    const points: Coord[] = [];
     if (a.x === b.x) {
       const [low, high] = a.y > b.y ? [b.y, a.y] : [a.y, b.y];
       for (let i = low; i <= high; i++) {
@@ -47,7 +52,7 @@ export default class ConcretePuzzle extends Puzzle {
       const slope = (b.y - a.y) / (b.x - a.x);
       const yIntercept = a.y - slope * a.x;
       for (let i = a.x; ; a.x > b.x ? i-- : i++) {
-        points.push({ x: i, y: slope * i + yIntercept })
+        points.push({ x: i, y: slope * i + yIntercept });
         if (i === b.x) {
           break;
         }
@@ -61,26 +66,31 @@ export default class ConcretePuzzle extends Puzzle {
   }
 
   public solveSecond(): number {
-    console.log('Solving second')
     const inputCopy = [...this.input];
 
-    let linePoints: Coord[] = []
-    inputCopy.forEach(line => {
-      const [a, b] = line.split(' -> ').map(point => {
-        const [x, y] = point.split(',').map(num => Number.parseInt(num));
-        return { x, y }
+    let linePoints: Coord[] = [];
+    inputCopy.forEach((line) => {
+      const [a, b] = line.split(' -> ').map((point) => {
+        const [x, y] = point.split(',').map((num) => Number.parseInt(num));
+        return { x, y };
       });
       linePoints.push(...this.getLinePoints(a, b, true));
-    })
-    const occurrencesOf = (coord: Coord, pointList: Coord[]) => pointList.reduce((count, curr) => ((coord.x === curr.x && coord.y === curr.y) ? count + 1 : count), 0);
+    });
+    const occurrencesOf = (coord: Coord, pointList: Coord[]) =>
+      pointList.reduce(
+        (count, curr) =>
+          coord.x === curr.x && coord.y === curr.y ? count + 1 : count,
+        0
+      );
     let score = 0;
-    linePoints.forEach(point => {
+    linePoints.forEach((point) => {
       if (occurrencesOf(point, linePoints) >= 2) {
         score++;
-        linePoints = linePoints.filter(p => !(p.x === point.x && p.y === point.y))
+        linePoints = linePoints.filter(
+          (p) => !(p.x === point.x && p.y === point.y)
+        );
       }
-    })
-
+    });
 
     return score;
   }
