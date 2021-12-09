@@ -25,3 +25,16 @@ D
 src/days/5/Puzzle.ts,5/1/5128d402ca3b24b5b54f0e8f7c51935812c4cabc
 D
 src/days/5/input.txt,8/6/869da79f149cd28ea3dd9cd683471b88651336e8
+D
+src/days/6/input.txt,3/a/3a2f9ccac68f532529fb7dc75c36a77e0bc01734
+I
+src/days/7/test_input.txt,a/6/a6121882d71d1e337c02a686fbc7a25fecf4a0c5
+D
+src/days/7/input.txt,1/c/1c5995fb5d8d1dd3b0a5532c88ecde7440e20cf2
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+D
+src/days/6/Puzzle.ts,7/b/7be769541e3e10128e2d82c9bff999568d2347f9
+I
+src/days/6/test_input.txt,3/1/3186ac9e5f86fb9528f5909943768946b9367b19
